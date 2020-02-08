@@ -1,0 +1,88 @@
+﻿<Window x:Class="CrmUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CrmUI"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Height="600" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Resources\img\icon.png" WindowStyle="None">
+
+    <Window.Resources>
+        
+    </Window.Resources>
+    
+    
+    <Grid Background="#FFF7F9F9" MouseDown="Grid_MouseDown">
+        <StackPanel VerticalAlignment="Top" >
+            <Grid Background="#FF04A0FF" Height="10"/>
+            <Grid  Margin="5">
+
+                <!--Buttons VK TG WA-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="535,0,70,0">
+                    <TextBlock Text="Esoft " FontFamily="/esoft-WPF;component/#Roboto" VerticalAlignment="Center" />
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0">
+                        <materialDesign:PackIcon Kind="Vk"/>
+                    </Button>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0">
+                        <materialDesign:PackIcon Kind="Telegram"/>
+                    </Button>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0">
+                        <materialDesign:PackIcon Kind="Whatsapp"/>
+                    </Button>
+                </StackPanel>
+                <!--Delete-->
+
+                <!--Правый верхний угол-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="2">
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0">
+                        <materialDesign:PackIcon Kind="BellOutline"/>
+                    </Button>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Margin="0 0 10 0">
+                        <materialDesign:PackIcon Kind="Settings"/>
+                    </Button>
+                    <Button x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="ButtonFechar_Click">
+                        <materialDesign:PackIcon Kind="Power"/>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+
+        <Grid x:Name="GridPrincipal" Margin="250 55 0 0">
+            <Grid x:Name="GridClient" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Width="250" HorizontalAlignment="Left" Background="#263238">
+            <Image Source="Resources\img\icon with name.png" VerticalAlignment="Top" Margin="10,10,15,0"/>
+            <materialDesign:TransitioningContent x:Name="TransitionSlideContent" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration = 0:0:0.2}">
+                <Grid x:Name="GridCursor" Margin="0 125 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="10" Height="60" Background="#FF04A0FF" />
+            </materialDesign:TransitioningContent>
+            <ListView x:Name="ListViewMenu" Margin="0 125" Foreground="White" Background="#263238" FontFamily="Champany &amp; Limousines" FontSize="25" SelectionChanged="ListViewMenu_SelectionChanged" IsSynchronizedWithCurrentItem="False" >
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="AccountMultiple" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock Text="Clients"  VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="AccountTie" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock  Text="Agents" VerticalAlignment="Center" Margin="20 0" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="HouseCity" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock  Text="Real estate" VerticalAlignment="Center" Margin="20 0" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FileDocument" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock  Text="Documents" VerticalAlignment="Center" Margin="20 0" />
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>

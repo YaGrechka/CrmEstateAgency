@@ -1,0 +1,15 @@
+﻿namespace CrmBl
+{
+    class ApartmentInfo
+    {
+        public int ApartmentInfoId { get; set; }
+
+        public virtual RealEstateAddress Address { get; set; }
+
+        public int Floor { get; set; }
+
+        public int Rooms { get; set; }
+
+        public int Area { get; set; }
+    }
+}
