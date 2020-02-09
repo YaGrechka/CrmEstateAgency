@@ -1,8 +1,10 @@
-﻿namespace CrmBl
+﻿using System.Collections.Generic;
+
+namespace CrmBL.Model
 {
-    class Client
+    class Agent
     {
-        public int ClientId { get; set; }
+        public int Id { get; set; }
 
         public string Name
         {
@@ -12,7 +14,7 @@
             }
             set
             {
-                if (Name == "")
+                if (value == "")
                 {
                     Name = "не введено";
                 }
@@ -32,7 +34,7 @@
             }
             set
             {
-                if (Surname == "")
+                if (value == "")
                 {
                     Surname = "не введено";
                 }
@@ -52,7 +54,7 @@
             }
             set
             {
-                if (Patronymic == "")
+                if (value == "")
                 {
                     Patronymic = "не введено";
                 }
@@ -64,11 +66,17 @@
             }
         }
 
-        public string Phone { get; set; }
+        public string Pasport { get; set; }
+
+        public decimal Salary { get; set; }
+
+        public virtual ICollection<Supply> Supplies { get; set; }
+
+        public virtual ICollection<Demand> Demands { get; set; }
 
         public override string ToString()
         {
-            return $"Имя {Name}, фамилия {Surname}, отчество {Patronymic}, номер телефона {Phone}.";
+            return $"Имя {Name}, фамилия {Surname}, отчество {Patronymic}, заработная плата {Salary}.";
         }
     }
 }
