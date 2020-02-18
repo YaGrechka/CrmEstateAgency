@@ -1,6 +1,6 @@
 ﻿namespace CrmBL.Model
 {
-    class LandInfo
+    class LandInfo : RealEstateAddress
     {
         public int LandInfoId { get; set; }
         public virtual RealEstateAddress Address { get; set; }

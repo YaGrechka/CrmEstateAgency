@@ -2,12 +2,12 @@
 
 namespace CrmBL.Model
 {
-    class RealEstateAddress
+    abstract class RealEstateAddress
     {
         public int RealEstateAddressId { get; set; }
-        public virtual HouseInfo HouseInfo { get; set; }
-        public virtual LandInfo LandInfo { get; set; }
-        public virtual ApartmentInfo ApartmentInfo { get; set; }
+        public HouseInfo HouseInfo { get; set; }
+        public LandInfo LandInfo { get; set; }
+        public ApartmentInfo ApartmentInfo { get; set; }
 
         public string City { get; set; }
 

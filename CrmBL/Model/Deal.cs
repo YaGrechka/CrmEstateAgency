@@ -6,7 +6,5 @@
 
         public int SupplyId { get; set; }
         public virtual Supply Supply { get; set; }
-
-
     }
 }

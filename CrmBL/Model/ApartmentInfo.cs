@@ -1,6 +1,6 @@
 ﻿namespace CrmBL.Model
 {
-    class ApartmentInfo
+    class ApartmentInfo : RealEstateAddress
     {
         public int ApartmentInfoId { get; set; }
         public virtual RealEstateAddress Address { get; set; }
