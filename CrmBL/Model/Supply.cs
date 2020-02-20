@@ -1,4 +1,6 @@
-﻿namespace CrmBL.Model
+﻿using System.Collections.Generic;
+
+namespace CrmBL.Model
 {
     class Supply
     {
@@ -27,7 +29,9 @@
         public virtual Client Client { get; set; }
 
         public int RealEstate { get; set; }
-        public virtual RealEstateAddress RealEstateAddress { get; set; }
+        public virtual RealEstate RealEstateAddress { get; set; }
+
+        public virtual ICollection<Deal> Deals { get; set; }
 
         public override string ToString()
         {

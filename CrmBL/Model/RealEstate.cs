@@ -2,12 +2,9 @@
 
 namespace CrmBL.Model
 {
-    abstract class RealEstateAddress
+    class RealEstate
     {
-        public int RealEstateAddressId { get; set; }
-        public HouseInfo HouseInfo { get; set; }
-        public LandInfo LandInfo { get; set; }
-        public ApartmentInfo ApartmentInfo { get; set; }
+        public int RealEstateId { get; set; }
 
         public string City { get; set; }
 
@@ -16,6 +13,20 @@ namespace CrmBL.Model
         public string House { get; set; }
 
         public string Number { get; set; }
+
+        public float? Longitude { get; set; }
+
+        public float? Latitude { get; set; }
+
+        public int? Rooms { get; set; }
+
+        public float? Area { get; set; }
+
+        public int? Floors { get; set; }
+
+        public int Floor { get; set; }
+
+        public string Type { get; set; }
 
         public virtual ICollection<Supply> Supplies { get; set; }
 
