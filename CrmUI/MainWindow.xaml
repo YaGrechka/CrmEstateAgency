@@ -12,7 +12,11 @@
     </Window.Resources>
     
     
-    <Grid Background="#FFF7F9F9" MouseDown="Grid_MouseDown">
+    <Grid Background="#FFF3F5F5" MouseDown="Grid_MouseDown" MinWidth="800" MinHeight="600">
+        <Grid.Effect>
+            <DropShadowEffect/>
+        </Grid.Effect>
+        <!--Верхняя панелька-->
         <StackPanel VerticalAlignment="Top" >
             <Grid Background="#FF04A0FF" Height="10"/>
             <Grid  Margin="5">
@@ -47,39 +51,47 @@
 
             </Grid>
         </StackPanel>
-
-        <Grid x:Name="GridPrincipal" Margin="250 55 0 0">
+ 
+        <!--Центр-->
+        <Grid Margin="275 55 0 0">
             <Grid x:Name="GridClient" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid Width="250" HorizontalAlignment="Left" Background="#263238">
+        <!--Вся левая панелька-->
+        <Grid Width="275" HorizontalAlignment="Left" Background="#263238">
             <Image Source="Resources\img\icon with name.png" VerticalAlignment="Top" Margin="10,10,15,0"/>
             <materialDesign:TransitioningContent x:Name="TransitionSlideContent" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration = 0:0:0.2}">
                 <Grid x:Name="GridCursor" Margin="0 125 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="10" Height="60" Background="#FF04A0FF" />
             </materialDesign:TransitioningContent>
-            <ListView x:Name="ListViewMenu" Margin="0 125" Foreground="White" Background="#263238" FontFamily="Champany &amp; Limousines" FontSize="25" SelectionChanged="ListViewMenu_SelectionChanged" IsSynchronizedWithCurrentItem="False" >
-                <ListViewItem Height="60">
+            <ListView BorderBrush="#263238" x:Name="ListViewMenu" Margin="0 125" Foreground="White" Background="#263238" FontFamily="Champany &amp; Limousines" FontSize="25" SelectionChanged="ListViewMenu_SelectionChanged" IsSynchronizedWithCurrentItem="False" >
+                <ListViewItem Height="60" BorderThickness="0">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="AccountMultiple" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock Text="Clients"  VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Клиенты"  VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="AccountTie" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock  Text="Agents" VerticalAlignment="Center" Margin="20 0" />
+                        <TextBlock  Text="Сотрудники" VerticalAlignment="Center" Margin="20 0" />
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="HouseCity" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock  Text="Real estate" VerticalAlignment="Center" Margin="20 0" />
+                        <TextBlock  Text="Недвжимость" VerticalAlignment="Center" Margin="20 0" />
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60" Cursor="None" BorderThickness="1" SnapsToDevicePixels="True" Background="{x:Null}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FileDocument" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock  Text="Потребности" VerticalAlignment="Center" Margin="20 0" />
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FileDocument" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock  Text="Documents" VerticalAlignment="Center" Margin="20 0" />
+                        <TextBlock  Text="Предложение" VerticalAlignment="Center" Margin="20 0" />
                     </StackPanel>
                 </ListViewItem>
             </ListView>

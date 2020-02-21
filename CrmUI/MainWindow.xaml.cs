@@ -28,6 +28,17 @@ namespace CrmUI
         {
             int index = ListViewMenu.SelectedIndex;
             MoveCursorMenu(index);
+
+            switch (index)
+            {
+                case 0:
+                    GridClient.Children.Clear();
+                    GridClient.Children.Add(new UserControlClient());
+                    break;
+                default:
+                    GridClient.Children.Clear();
+                    break;
+            }
         }
 
         private void MoveCursorMenu(int index)
