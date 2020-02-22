@@ -3,9 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CrmUI"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d" Height="600" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Resources\img\icon.png" WindowStyle="None">
 
     <Window.Resources>
@@ -32,7 +30,7 @@
                         <materialDesign:PackIcon Kind="Telegram"/>
                     </Button>
                     <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0">
-                        <materialDesign:PackIcon Kind="Whatsapp"/>
+                        <materialDesign:PackIcon Kind="BabyFace"/>
                     </Button>
                 </StackPanel>
                 <!--Delete-->
@@ -54,31 +52,33 @@
         </StackPanel>
 
         <!--Центр-->
-        <Grid Margin="275 55 0 0">
-            <StackPanel Orientation="Horizontal" x:Name="GridClient" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <WindowsFormsHost  Margin="50 0 0 0" HorizontalAlignment="Left" Name="wfhSample" Height="400" Width="600">
-                    <WindowsFormsHost.Child>
-                        <wf:DataGridView Dock="Fill" x:Name="dataGridView"/>
-                    </WindowsFormsHost.Child>
-                </WindowsFormsHost>
-                <ListView Margin="50 100 0 100" Width="120" x:Name="ListViewDataBaseButtons" SelectionChanged="ListViewDataBaseButtons_SelectionChanged" >
-                    <ListViewItem Background="#FFA2A2A2" Selected="ListViewItem_Selected">
+        <Grid Margin="325 75 50 50">
+            <StackPanel Orientation="Horizontal" x:Name="GridClient" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <DataGrid x:Name="dataGrid" Height="450" Width="600"/>
+                <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Margin="50">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="50"></RowDefinition>
+                        <RowDefinition MinHeight="50"></RowDefinition>
+                        <RowDefinition MinHeight="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Height="50" Click="Button_ClickRefresh" Grid.Row="0">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
                             <TextBlock Text="Обновить" VerticalAlignment="Center"/>
                         </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Background="#FFA2A2A2" Selected="ListViewItem_Selected_1">
+                    </Button>
+                    <Button Height="50" Click="Button_ClickUpload" Grid.Row="2">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Upload" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
                             <TextBlock Text="Изменить" VerticalAlignment="Center"/>
                         </StackPanel>
-                    </ListViewItem>
-                </ListView>
-            </StackPanel>            
-            
-            
-            
+                    </Button>
+
+                </Grid>
+            </StackPanel>
             <!--<WindowsFormsHost Name="wfhSample">
                 <WindowsFormsHost.Child>
                     <wf:WebBrowser DocumentTitleChanged="wbWinForms_DocumentTitleChanged" />

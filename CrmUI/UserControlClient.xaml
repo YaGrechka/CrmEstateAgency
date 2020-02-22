@@ -8,25 +8,36 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="600">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <DataGrid AutoGenerateColumns="True" x:Name="dataGrid" Width="470"  HorizontalAlignment="Left" Loaded="DataGrid_Loaded"/>
         <Grid Width="120" HorizontalAlignment="Right">
-            <ListView x:Name="listVievButtons" Margin="0, 150" Height="200" Background="{x:Null}" SelectionChanged="ListVievButtons_SelectionChanged">
+            <!--<ListView x:Name="listVievButtons" Margin="0, 150" Height="200" Background="{x:Null}" SelectionChanged="ListVievButtons_SelectionChanged">
                 <ListViewItem Background="#FFAA6A6A">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
                         <TextBlock Text="Обновить" VerticalAlignment="Center"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Background="#FFAA6A6A"  HorizontalAlignment="Stretch">
+                <ListViewItem Background="#FFAA6A6A"  HorizontalAlignment="Stretch" >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Upload" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
                         <TextBlock Text="Изменить" VerticalAlignment="Center"/>
                     </StackPanel>
                 </ListViewItem>
-            </ListView>
+            </ListView>-->
+            <Grid Margin="0 175">
+                <Grid Background="#FFAA6A6A" Height="50" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock Text="Обновить" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Background="#FFAA6A6A" Height="50" VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Upload" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock Text="Изменить" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>
