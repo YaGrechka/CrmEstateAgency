@@ -75,6 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resources\DB.cs" />
     <Compile Include="UserControlClient.xaml.cs">
       <DependentUpon>UserControlClient.xaml</DependentUpon>
     </Compile>
