@@ -24,12 +24,9 @@ namespace CrmUI
     /// </summary>
     public partial class UserControlClient : UserControl
     {
-        string connectionString = "Data Source=VALUN;Initial Catalog=Test;Integrated Security=True";
-        string query = "SELECT * FROM Person";
-        SqlDataAdapter ad;
-        DataSet dataSet;
 
-       
+        //SqlDataAdapter adapter;
+        //DataTable phonesTable;
         //SqlDataAdapter adapter;
         //DataTable phonesTable;
 
@@ -40,46 +37,37 @@ namespace CrmUI
 
         private void DataGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                ad = new SqlDataAdapter(query, connectionString);
-                dataSet = new DataSet();
-
-                ad.Fill(dataSet);
-
-                dataGrid.DataContext = dataSet.Tables[0];
-            }
         }
 
         private void ListVievButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int index = listVievButtons.SelectedIndex;
+            //int index = listVievButtons.SelectedIndex;
 
-            switch (index)
-            {
-                case 0:
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        ad.SelectCommand = new SqlCommand(query, connection);
-                        SqlCommandBuilder builder = new SqlCommandBuilder(ad);
+            //switch (index)
+            //{
+            //    case 0:
+            //        using (SqlConnection connection = new SqlConnection(connectionString))
+            //        {
+            //            ad.SelectCommand = new SqlCommand(query, connection);
+            //            SqlCommandBuilder builder = new SqlCommandBuilder(ad);
 
-                        ad.UpdateCommand = builder.GetUpdateCommand();
-                        ad.Update(dataSet);
-                    }
-                    break;
-                case 1:
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        ad = new SqlDataAdapter(query, connectionString);
-                        dataSet = new DataSet();
-                        ad.Fill(dataSet);
-                    }
-                    dataGrid.DataContext = dataSet.Tables[0];
-                    break;
+            //            ad.UpdateCommand = builder.GetUpdateCommand();
+            //            ad.Update(dataSet);
+            //        }
+            //        break;
+            //    case 1:
+            //        using (SqlConnection connection = new SqlConnection(connectionString))
+            //        {
+            //            ad = new SqlDataAdapter(query, connectionString);
+            //            dataSet = new DataSet();
+            //            ad.Fill(dataSet);
+            //        }
+            //        dataGrid.DataContext = dataSet.Tables[0];
+            //        break;
 
-                default:
-                    break;
-            }
+            //    default:
+            //        break;
+            //}
         }
     }
 }

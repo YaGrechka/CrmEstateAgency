@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrmUI"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d" Height="600" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Resources\img\icon.png" WindowStyle="None">
 
     <Window.Resources>
-        
+
     </Window.Resources>
-    
-    
+
+
     <Grid Background="#FFF3F5F5" MouseDown="Grid_MouseDown" MinWidth="800" MinHeight="600">
         <Grid.Effect>
             <DropShadowEffect/>
@@ -51,10 +52,38 @@
 
             </Grid>
         </StackPanel>
- 
+
         <!--Центр-->
         <Grid Margin="275 55 0 0">
-            <Grid x:Name="GridClient" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" x:Name="GridClient" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <WindowsFormsHost  Margin="50 0 0 0" HorizontalAlignment="Left" Name="wfhSample" Height="400" Width="600">
+                    <WindowsFormsHost.Child>
+                        <wf:DataGridView Dock="Fill" x:Name="dataGridView"/>
+                    </WindowsFormsHost.Child>
+                </WindowsFormsHost>
+                <ListView Margin="50 100 0 100" Width="120" x:Name="ListViewDataBaseButtons" SelectionChanged="ListViewDataBaseButtons_SelectionChanged" >
+                    <ListViewItem Background="#FFA2A2A2" Selected="ListViewItem_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
+                            <TextBlock Text="Обновить" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Background="#FFA2A2A2" Selected="ListViewItem_Selected_1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Upload" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
+                            <TextBlock Text="Изменить" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>            
+            
+            
+            
+            <!--<WindowsFormsHost Name="wfhSample">
+                <WindowsFormsHost.Child>
+                    <wf:WebBrowser DocumentTitleChanged="wbWinForms_DocumentTitleChanged" />
+                </WindowsFormsHost.Child>
+            </WindowsFormsHost>-->
         </Grid>
 
         <!--Вся левая панелька-->
