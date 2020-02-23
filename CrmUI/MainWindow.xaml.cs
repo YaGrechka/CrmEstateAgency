@@ -13,28 +13,18 @@ namespace CrmUI
     {
         SqlDataAdapter adapter;
         DataSet dataSet;
-        const string connectionString = "Data Source=VALUN;Initial Catalog=Test;Integrated Security=True";
-        const string query = "SELECT * FROM Person";
+        const string connectionString = "Data Source=VALUN;Initial Catalog=CrmRealEstate;Integrated Security=True";
+        const string query = "SELECT * FROM Clients";
 
         public MainWindow()
         {
             InitializeComponent();
-
-            //(wfhSample.Child as System.Windows.Forms.WebBrowser).Navigate("http://m.vk.com/YaGrechka");
-                        
-            //GridClient.Children.Add(new UserControlClientTable());
-            //GridClient.Children.Add(new UserControlClientButton());
         }
 
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         } //Close app
-
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -69,7 +59,6 @@ namespace CrmUI
                 adapter = new SqlDataAdapter(query, connection);
                 dataSet = new DataSet();
                 adapter.Fill(dataSet);
-                connection.Close();
             }
             
             dataGrid.ItemsSource = dataSet.Tables[0].DefaultView;
@@ -85,6 +74,39 @@ namespace CrmUI
                 adapter.UpdateCommand = builder.GetUpdateCommand();
                 adapter.Update(dataSet);
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                adapter = new SqlDataAdapter(query, connection);
+                dataSet = new DataSet();
+                adapter.Fill(dataSet);
+            }
+
+            dataGrid.ItemsSource = dataSet.Tables[0].DefaultView;
+            dataGrid.Columns[0].Visibility = Visibility.Hidden;
+
+
+
+            //(wfhSample.Child as System.Windows.Forms.WebBrowser).Navigate("http://m.vk.com/YaGrechka");
+
+            //GridClient.Children.Add(new UserControlClientTable());
+            //GridClient.Children.Add(new UserControlClientButton());
+        }
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                DragMove();
+            }
+            catch
+            {
+
+            }
+            
         }
     }
 }

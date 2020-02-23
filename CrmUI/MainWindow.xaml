@@ -4,19 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" Height="600" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Resources\img\icon.png" WindowStyle="None">
+        mc:Ignorable="d" Height="600" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" Icon="Resources\img\icon.png" Loaded="Window_Loaded" WindowStyle="None">
 
     <Window.Resources>
 
     </Window.Resources>
 
 
-    <Grid Background="#FFF3F5F5" MouseDown="Grid_MouseDown" MinWidth="800" MinHeight="600">
-        <Grid.Effect>
-            <DropShadowEffect/>
-        </Grid.Effect>
+    <Grid Background="#FFF3F5F5"  MinWidth="800" MinHeight="600">
         <!--Верхняя панелька-->
-        <StackPanel VerticalAlignment="Top" >
+        <StackPanel VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" MouseDown="StackPanel_MouseDown">
             <Grid Background="#FF04A0FF" Height="10"/>
             <Grid  Margin="5">
 
@@ -54,7 +51,7 @@
         <!--Центр-->
         <Grid Margin="325 75 50 50">
             <StackPanel Orientation="Horizontal" x:Name="GridClient" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <DataGrid x:Name="dataGrid" Height="450" Width="600"/>
+                <DataGrid x:Name="dataGrid" Height="450" Width="600" BorderThickness="0" RenderTransformOrigin="0.5,0.5"/>
                 <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Margin="50">
                     <Grid.RowDefinitions>
                         <RowDefinition MinHeight="50"></RowDefinition>
@@ -65,6 +62,22 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Button Height="50" Click="Button_ClickRefresh" Grid.Row="0">
+                        <Button.RenderTransform>
+                            <RotateTransform x:Name="rotate"
+                         CenterX="25"
+                         CenterY="25"/>
+                        </Button.RenderTransform>
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation Storyboard.TargetName="rotate"
+                                     Storyboard.TargetProperty="Angle"
+                                     By="360" Duration="0:0:1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
                             <TextBlock Text="Обновить" VerticalAlignment="Center"/>
@@ -125,5 +138,6 @@
                 </ListViewItem>
             </ListView>
         </Grid>
+        
     </Grid>
 </Window>
