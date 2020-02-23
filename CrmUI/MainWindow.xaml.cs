@@ -78,15 +78,15 @@ namespace CrmUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                adapter = new SqlDataAdapter(query, connection);
-                dataSet = new DataSet();
-                adapter.Fill(dataSet);
-            }
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    adapter = new SqlDataAdapter(query, connection);
+            //    dataSet = new DataSet();
+            //    adapter.Fill(dataSet);
+            //}
 
-            dataGrid.ItemsSource = dataSet.Tables[0].DefaultView;
-            dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            //dataGrid.ItemsSource = dataSet.Tables[0].DefaultView;
+            //dataGrid.Columns[0].Visibility = Visibility.Hidden;
 
 
 
