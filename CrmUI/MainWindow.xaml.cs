@@ -1,8 +1,13 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace CrmUI
 {
@@ -14,7 +19,7 @@ namespace CrmUI
         SqlDataAdapter adapter;
         DataSet dataSet;
         const string connectionString = "Data Source=VALUN;Initial Catalog=CrmRealEstate;Integrated Security=True";
-        const string query = "SELECT * FROM Clients";
+        string query = "SELECT * FROM Clients";
 
         public MainWindow()
         {
@@ -33,15 +38,29 @@ namespace CrmUI
 
             switch (index)
             {
+                case 0:
+                    query = "SELECT* FROM Clients";
+                    Refresh();
+                    break;
                 case 1:
+                    query = "SELECT* FROM Agents";
+                    Refresh();
                     break;
                 case 2:
+                    query = "SELECT* FROM RealEstates";
+                    Refresh();
                     break;
                 case 3:
+                    query = "SELECT* FROM Demands";
+                    Refresh();
                     break;
                 case 4:
+                    query = "SELECT* FROM Supplies";
+                    Refresh();
                     break;
                 default:
+                    query = "SELECT* FROM Clients";
+                    Refresh();
                     break;
             }
         }
@@ -49,24 +68,37 @@ namespace CrmUI
         private void MoveCursorMenu(int index)
         {
             TransitionSlideContent.OnApplyTemplate();
-            GridCursor.Margin = new Thickness(0, (125 + (60 * index)), 0, 0);
+            GridCursor.Margin = new Thickness(0, (140 + (60 * index)), 0, 0);
         }
 
         private void Button_ClickRefresh(object sender, RoutedEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+                Refresh();        
+        }
+        
+        private void Refresh()
+        {
+            try
             {
-                adapter = new SqlDataAdapter(query, connection);
-                dataSet = new DataSet();
-                adapter.Fill(dataSet);
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    adapter = new SqlDataAdapter(query, connection);
+                    dataSet = new DataSet();
+                    adapter.Fill(dataSet);
+                }
+                dataGrid.ItemsSource = dataSet.Tables[0].DefaultView;
+                dataGrid.Columns[0].Visibility = Visibility.Hidden;
             }
-            
-            dataGrid.ItemsSource = dataSet.Tables[0].DefaultView;
-            dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
         }
 
-        private void Button_ClickUpload(object sender, RoutedEventArgs e)
+        private void Upload()
         {
+            try
+            {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 adapter.SelectCommand = new SqlCommand(query, connection);
@@ -74,22 +106,20 @@ namespace CrmUI
                 adapter.UpdateCommand = builder.GetUpdateCommand();
                 adapter.Update(dataSet);
             }
+            }catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }            
+        }
+
+        private void Button_ClickUpload(object sender, RoutedEventArgs e)
+        {
+            Upload();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //    adapter = new SqlDataAdapter(query, connection);
-            //    dataSet = new DataSet();
-            //    adapter.Fill(dataSet);
-            //}
-
-            //dataGrid.ItemsSource = dataSet.Tables[0].DefaultView;
-            //dataGrid.Columns[0].Visibility = Visibility.Hidden;
-
-
-
+            Refresh();
             //(wfhSample.Child as System.Windows.Forms.WebBrowser).Navigate("http://m.vk.com/YaGrechka");
 
             //GridClient.Children.Add(new UserControlClientTable());
