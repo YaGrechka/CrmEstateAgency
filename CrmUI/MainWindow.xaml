@@ -4,18 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" MinHeight="500" Height="600" MinWidth="800" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" Icon="Resources\img\icon.png" Loaded="Window_Loaded" WindowStyle="None">
+        mc:Ignorable="d" MinHeight="550" Height="550" MinWidth="1150" Width="1150" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Icon="Resources\img\icon.png" Loaded="Window_Loaded"  SnapsToDevicePixels="False" WindowStyle="None">
 
     <Window.Resources>
 
     </Window.Resources>
 
-
     <Grid Background="#FFF3F5F5">
         <!--Верхняя панелька-->
         <StackPanel VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" MouseDown="StackPanel_MouseDown">
             <Grid Background="#FF04A0FF" Height="10"/>
-            <Grid  Margin="5">
+            <Grid Margin="5">
 
                 <!--Buttons VK TG WA-->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -40,6 +39,13 @@
                     <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Margin="0 0 10 0">
                         <materialDesign:PackIcon Kind="Settings"/>
                     </Button>
+
+                    <Button x:Name="ButtonWindowMinimize" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0, 4,0,0" Click="ButtonWindowMinimize_Click">
+                        <materialDesign:PackIcon Kind="WindowMinimize"/>
+                    </Button>
+                    <Button x:Name="ButtonFullScreen" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="ButtonFullScreen_Click">
+                        <materialDesign:PackIcon x:Name="ButtonFullScreenIcon" Kind="WindowRestore"/>
+                    </Button>
                     <Button x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="ButtonFechar_Click">
                         <materialDesign:PackIcon Kind="Power"/>
                     </Button>
@@ -49,52 +55,60 @@
         </StackPanel>
 
         <!--Центр-->
-        <Grid Margin="325 75 50 50">
-            <StackPanel Orientation="Horizontal" x:Name="GridClient" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <DataGrid x:Name="dataGrid" Height="450" Width="600" BorderThickness="0" RenderTransformOrigin="0.5,0.5"/>
-                <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Margin="50">
-                    <Grid.RowDefinitions>
-                        <RowDefinition MinHeight="50"></RowDefinition>
-                        <RowDefinition MinHeight="50"></RowDefinition>
-                        <RowDefinition MinHeight="50"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <!--Обновить-->
-                    <Button Height="50" Click="Button_ClickRefresh" Grid.Row="0">
-                        <StackPanel Orientation="Horizontal">
-                            <Grid Width="26" Height="26" VerticalAlignment="Center" Margin="5" Name="GridRefreshAnimation">
-                                <materialDesign:PackIcon Kind="Refresh" Width="26" Height="26" VerticalAlignment="Center"/>
-                                <Grid.RenderTransform>
-                                    <RotateTransform x:Name="rotate"
+        <Grid Margin="325 75 0 50">
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid Grid.Column="0" x:Name="dataGrid" MinWidth="600" BorderThickness="0" HorizontalContentAlignment="Stretch" ColumnWidth="Auto"/>
+            <Grid Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="130">
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="50"/>
+                    <RowDefinition MinHeight="50"/>
+                    <RowDefinition MinHeight="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <!--Обновить-->
+                <Button Height="50" Click="Button_ClickRefresh" Grid.Row="0" Grid.ColumnSpan="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Width="26" Height="26" VerticalAlignment="Center" Margin="5" x:Name="GridRefreshAnimation">
+                            <Grid.RenderTransform>
+                                <RotateTransform x:Name="rotate"
                                      CenterX="13"
                                      CenterY="13"/>
-                                </Grid.RenderTransform>
-                                <!--<Grid.Triggers>
-                                    <EventTrigger RoutedEvent="Loaded" >
-                                        <BeginStoryboard>
-                                            <Storyboard RepeatBehavior="Forever">
-                                                <DoubleAnimation Storyboard.TargetName="rotate"
+                            </Grid.RenderTransform>
+                            <materialDesign:PackIcon Kind="Refresh" Width="26" Height="26" VerticalAlignment="Center"/>
+                            <!--<Grid.Triggers >
+                                <EventTrigger RoutedEvent="Loaded" >
+                                    <BeginStoryboard>
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimation Storyboard.TargetName="rotate"
                                                                  Storyboard.TargetProperty="Angle"
                                                                  By="360" Duration="0:0:1"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                </Grid.Triggers>-->
-                            </Grid>
-                            <TextBlock Text="Обновить" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                    <!--Изменить-->
-                    <Button Height="50" Click="Button_ClickUpload" Grid.Row="2">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Upload" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
-                            <TextBlock Text="Изменить" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </Grid>
-            </StackPanel>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Grid.Triggers>-->
+                        </Grid>
+                        <TextBlock Text="Обновить" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <!--Изменить-->
+                <Button Height="50" Click="Button_ClickUpload" Grid.Row="2" Grid.ColumnSpan="2">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Upload" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock Text="Изменить" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
             <!--<WindowsFormsHost Name="wfhSample">
                 <WindowsFormsHost.Child>
                     <wf:WebBrowser DocumentTitleChanged="wbWinForms_DocumentTitleChanged" />
@@ -108,7 +122,7 @@
             <materialDesign:TransitioningContent x:Name="TransitionSlideContent" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration = 0:0:0.2}">
                 <Grid x:Name="GridCursor" Margin="0 140 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="10" Height="60" Background="#FF04A0FF" />
             </materialDesign:TransitioningContent>
-            <ListView BorderBrush="#263238" x:Name="ListViewMenu" Margin="0 140 0 80" Foreground="White" Background="#263238" FontFamily="Champany &amp; Limousines" FontSize="25" SelectionChanged="ListViewMenu_SelectionChanged" IsSynchronizedWithCurrentItem="False" >
+            <ListView BorderBrush="#263238" x:Name="ListViewMenu" Margin="0 140 0 0" Foreground="White" Background="#263238" FontFamily="Champany &amp; Limousines" FontSize="25" SelectionChanged="ListViewMenu_SelectionChanged" IsSynchronizedWithCurrentItem="False" >
                 <ListViewItem Height="60" BorderThickness="0">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="AccountMultiple" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
