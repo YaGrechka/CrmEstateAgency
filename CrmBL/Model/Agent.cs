@@ -1,70 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace CrmBL.Model
 {
-    class Agent
+    public class Agent
     {
         public int Id { get; set; }
 
-        public string Name
-        {
-            get
-            {
-                return Name;
-            }
-            set
-            {
-                if (value == "")
-                {
-                    Name = "не введено";
-                }
-                else
-                {
-                    Name = value;
-                }
+        public string Name { get; set; }
 
-            }
-        }
+        public string Surname { get; set; }
 
-        public string Surname
-        {
-            get
-            {
-                return Surname;
-            }
-            set
-            {
-                if (value == "")
-                {
-                    Surname = "не введено";
-                }
-                else
-                {
-                    Surname = value;
-                }
-
-            }
-        }
-
-        public string Patronymic
-        {
-            get
-            {
-                return Patronymic;
-            }
-            set
-            {
-                if (value == "")
-                {
-                    Patronymic = "не введено";
-                }
-                else
-                {
-                    Patronymic = value;
-                }
-
-            }
-        }
+        public string Patronymic { get; set; }
 
         public string Pasport { get; set; }
 
@@ -77,6 +25,41 @@ namespace CrmBL.Model
         public override string ToString()
         {
             return $"Имя {Name}, фамилия {Surname}, отчество {Patronymic}, заработная плата {Salary}.";
+        }
+
+        public string Connect(string Login, string Password)
+        {
+            string Message = "Данные были введены не верно";
+            const string connectionString = "Data Source=VALUN;Initial Catalog=CrmRealEstate;Integrated Security=True";
+            string query = $"SELECT Password FROM Agents WHERE Login = {Login}";
+            string password = "";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+
+                try
+                {
+                    connection.Open();
+                    password = Convert.ToString(sqlCommand.ExecuteScalar());
+                }
+                catch (Exception x)
+                {
+                    string q = "\"";
+                    if (x.Message == $"Недопустимое имя столбца {q}{Login}{q}.")
+                    {
+                        Message = "Данные были введены не верно";
+                    }
+                    else
+                    {
+                        Message = x.Message;
+                    }
+                }
+            }
+            if (password == Password)
+            {
+                return "";
+            }
+            return Message;
         }
     }
 }

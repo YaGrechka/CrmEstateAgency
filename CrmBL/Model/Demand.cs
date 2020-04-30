@@ -2,7 +2,7 @@
 
 namespace CrmBL.Model
 {
-    class Demand
+    public class Demand
     {
         public int DemandId { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using System.Data;
 using System.Data.SqlClient;
 using System.Security.Principal;
@@ -7,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using CrmBL.Model;
+
 
 namespace CrmUI
 {
@@ -15,6 +18,7 @@ namespace CrmUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        Agent agent;
         SqlDataAdapter adapter;
         DataSet dataSet;
         const string connectionString = "Data Source=VALUN;Initial Catalog=CrmRealEstate;Integrated Security=True";
@@ -23,7 +27,12 @@ namespace CrmUI
         public MainWindow()
         {
             InitializeComponent();
+        }
 
+        public MainWindow(Agent _agent)
+        {
+                InitializeComponent();
+                agent = _agent;
         }
 
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
@@ -90,6 +99,10 @@ namespace CrmUI
                     query = "SELECT* FROM Supplies";
                     Refresh();
                     break;
+                case 5:
+                    query = "SELECT* FROM Deals";
+                    Refresh();
+                    break;
                 default:
                     query = "SELECT* FROM Clients";
                     Refresh();
@@ -150,16 +163,10 @@ namespace CrmUI
             Upload();
         }
 
-        async private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() =>
-            {
-
-            });
             Refresh();
-
             //(wfhSample.Child as System.Windows.Forms.WebBrowser).Navigate("http://m.vk.com/YaGrechka");
-
             //GridClient.Children.Add(new UserControlClientTable());
             //GridClient.Children.Add(new UserControlClientButton());
         }
@@ -179,16 +186,16 @@ namespace CrmUI
 
         private void ButtonFullScreen_Click(object sender, RoutedEventArgs e)
         {
-            if (ButtonFullScreenIcon.Kind == MaterialDesignThemes.Wpf.PackIconKind.Fullscreen)
+            if (ButtonFullScreenIcon.Kind == MaterialDesignThemes.Wpf.PackIconKind.WindowMaximize)
             {
-                ButtonFullScreenIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.FullscreenExit;
-                ResizeMode = ResizeMode.NoResize;
+                ButtonFullScreenIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowRestore;
+                //ResizeMode = ResizeMode.NoResize;
                 this.WindowState = WindowState.Maximized;
             }
             else
             {
-                ButtonFullScreenIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Fullscreen;
-                ResizeMode = ResizeMode.CanResize;
+                ButtonFullScreenIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowMaximize;
+                //ResizeMode = ResizeMode.CanResize;
                 this.WindowState = WindowState.Normal;
             }
 
@@ -197,6 +204,26 @@ namespace CrmUI
         private void ButtonWindowMinimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void ButtonSetting_Click(object sender, RoutedEventArgs e)
+        {
+            Settings settings = new Settings();
+            //settings.Top = this.Top - 100;
+            settings.Show();
+        }
+
+        private void Button_ClickCreateDeal(object sender, RoutedEventArgs e)
+        {
+            CreateDeal createDeal = new CreateDeal();
+            createDeal.Show();
+        }
+
+        private void Button_ClikLogout(object sender, RoutedEventArgs e)
+        {
+            SignIn signIn = new SignIn();
+            signIn.Show();
+            Close();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace CrmBL.Model
 {
-    class CrmContext : DbContext
+    public class CrmContext : DbContext
     {
         public CrmContext() : base("CrmConnection") {}
 

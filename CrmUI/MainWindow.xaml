@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" MinHeight="550" Height="550" MinWidth="1150" Width="1150" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Icon="Resources\img\icon.png" Loaded="Window_Loaded"  SnapsToDevicePixels="False" WindowStyle="None">
+        mc:Ignorable="d" MinHeight="550" Height="550" MinWidth="1150" Width="1150" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Icon="Resources\img\Logo.png" Loaded="Window_Loaded"  SnapsToDevicePixels="False" WindowStyle="None">
 
     <Window.Resources>
 
@@ -16,27 +16,12 @@
             <Grid Background="#FF04A0FF" Height="10"/>
             <Grid Margin="5">
 
-                <!--Buttons VK TG WA-->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="Esoft " FontFamily="/esoft-WPF;component/#Roboto" VerticalAlignment="Center" />
-                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0">
-                        <materialDesign:PackIcon Kind="Vk"/>
-                    </Button>
-                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0">
-                        <materialDesign:PackIcon Kind="Telegram"/>
-                    </Button>
-                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0">
-                        <materialDesign:PackIcon Kind="Tea"/>
-                    </Button>
-                </StackPanel>
-                <!--Delete-->
-
                 <!--Правый верхний угол-->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="2">
-                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0">
-                        <materialDesign:PackIcon Kind="BellOutline"/>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="Button_ClikLogout">
+                        <materialDesign:PackIcon Kind="logout"/>
                     </Button>
-                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Margin="0 0 10 0">
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Margin="0 0 10 0" Click="ButtonSetting_Click">
                         <materialDesign:PackIcon Kind="Settings"/>
                     </Button>
 
@@ -44,13 +29,12 @@
                         <materialDesign:PackIcon Kind="WindowMinimize"/>
                     </Button>
                     <Button x:Name="ButtonFullScreen" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="ButtonFullScreen_Click">
-                        <materialDesign:PackIcon x:Name="ButtonFullScreenIcon" Kind="WindowRestore"/>
+                        <materialDesign:PackIcon x:Name="ButtonFullScreenIcon" Kind="WindowMaximize"/>
                     </Button>
                     <Button x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="ButtonFechar_Click">
-                        <materialDesign:PackIcon Kind="Power"/>
+                        <materialDesign:PackIcon Kind="Close"/>
                     </Button>
                 </StackPanel>
-
             </Grid>
         </StackPanel>
 
@@ -65,18 +49,19 @@
             </Grid.ColumnDefinitions>
 
             <DataGrid Grid.Column="0" x:Name="dataGrid" MinWidth="600" BorderThickness="0" HorizontalContentAlignment="Stretch" ColumnWidth="Auto"/>
-            <Grid Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="130">
+            <Grid Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="140">
                 <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="50"/>
+                    <RowDefinition MinHeight="50"/>
                     <RowDefinition MinHeight="50"/>
                     <RowDefinition MinHeight="50"/>
                     <RowDefinition MinHeight="50"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <!--Обновить-->
-                <Button Height="50" Click="Button_ClickRefresh" Grid.Row="0" Grid.ColumnSpan="2">
+                <Button Height="50" Click="Button_ClickRefresh" Grid.Row="0">
                     <StackPanel Orientation="Horizontal">
                         <Grid Width="26" Height="26" VerticalAlignment="Center" Margin="5" x:Name="GridRefreshAnimation">
                             <Grid.RenderTransform>
@@ -84,27 +69,23 @@
                                      CenterX="13"
                                      CenterY="13"/>
                             </Grid.RenderTransform>
-                            <materialDesign:PackIcon Kind="Refresh" Width="26" Height="26" VerticalAlignment="Center"/>
-                            <!--<Grid.Triggers >
-                                <EventTrigger RoutedEvent="Loaded" >
-                                    <BeginStoryboard>
-                                        <Storyboard RepeatBehavior="Forever">
-                                            <DoubleAnimation Storyboard.TargetName="rotate"
-                                                                 Storyboard.TargetProperty="Angle"
-                                                                 By="360" Duration="0:0:1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                            </Grid.Triggers>-->
+                            <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" VerticalAlignment="Center"/>
                         </Grid>
                         <TextBlock Text="Обновить" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <!--Изменить-->
-                <Button Height="50" Click="Button_ClickUpload" Grid.Row="2" Grid.ColumnSpan="2">
+                <!--Сохранить-->
+                <Button Height="50" Click="Button_ClickUpload" Grid.Row="2">
+                    <StackPanel Orientation="Horizontal" Width="107">
+                        <materialDesign:PackIcon Kind="ContentSave" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock Text="Сохранить" VerticalAlignment="Center" Width="68"/>
+                    </StackPanel>
+                </Button>
+                <!--Создать сделку-->
+                <Button Height="50" Grid.Row="4" Click="Button_ClickCreateDeal">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Upload" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock Text="Изменить" VerticalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="plus" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
+                        <TextBlock Text="Заключить сделку" VerticalAlignment="Center" TextWrapping="Wrap" IsEnabled="False" Width="75"/>
                     </StackPanel>
                 </Button>
             </Grid>
@@ -118,7 +99,7 @@
 
         <!--Вся левая панелька-->
         <Grid Width="262" HorizontalAlignment="Left" Background="#263238">
-            <Image Source="Resources\img\icon with name.png" VerticalAlignment="Top" Margin="10,10,15,0"/>
+            <Image Source="Resources\img\empty Logo with white name.png" VerticalAlignment="Top" Margin="10,26,10,0" Width="210"/>
             <materialDesign:TransitioningContent x:Name="TransitionSlideContent" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration = 0:0:0.2}">
                 <Grid x:Name="GridCursor" Margin="0 140 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="10" Height="60" Background="#FF04A0FF" />
             </materialDesign:TransitioningContent>
@@ -155,7 +136,7 @@
                 </ListViewItem>
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="FileDocument" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
+                        <materialDesign:PackIcon Kind="Deal" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
                         <TextBlock  Text="Сделка" VerticalAlignment="Center" Margin="20 0" />
                     </StackPanel>
                 </ListViewItem>

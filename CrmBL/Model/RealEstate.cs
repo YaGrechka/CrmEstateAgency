@@ -2,7 +2,7 @@
 
 namespace CrmBL.Model
 {
-    class RealEstate
+    public class RealEstate
     {
         public int RealEstateId { get; set; }
 

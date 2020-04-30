@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:CrmUI"
         mc:Ignorable="d"
         Title="SignIn" Height="450" Width="400" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" AllowDrop="True" Loaded="Window_Loaded">
@@ -23,7 +24,7 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <Image Margin="0 70 0 0" Height="100" Width="250" Source="Resources/img/logo.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Image Margin="75,90,75,0" Height="100" Width="100" Source="Resources/img/Logo dark.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Grid Margin="25 210 25 85">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -41,6 +42,10 @@
             <PasswordBox x:Name="TextBoxPassword" Grid.Row="2" Width="200" BorderBrush="LightGray" BorderThickness="1" ClipToBounds="True" FontSize="14" MaxLength="20"  ToolTip="Введите пароль своей учетной записи CRM Real Estate" GotFocus="TextBoxPassword_GotFocus" LostFocus="TextBoxPassword_LostFocus"/>
             <Button Grid.Row="4" Width="200" Content="Авторизоваться" Click="ButtonLogIn_Click"/>
             <TextBox Name="TextBoxKostil" Grid.Row="2" Text="Пароль" FontSize="14" BorderBrush="LightGray" Foreground="#FF6D6D6D" Margin="75,0,226,0" GotFocus="TextBox_GotFocus"/>
+        </Grid>
+        <Grid Name="loadAnimation" Background="White" Opacity="0.7" Visibility="Hidden">
+            <Image  HorizontalAlignment="Center" VerticalAlignment="Center"
+               gif:ImageBehavior.AutoStart="True" gif:ImageBehavior.AnimatedSource="Resources/img/loading45.gif"/>
         </Grid>
     </Grid>
 </Window>

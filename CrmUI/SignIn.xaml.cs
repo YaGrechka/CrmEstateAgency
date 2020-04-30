@@ -5,6 +5,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.ServiceProcess;
 using System.Security.Principal;
+using CrmBL.Model;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace CrmUI
 {
@@ -106,49 +109,30 @@ namespace CrmUI
 
         private void ButtonLogIn_Click(object sender, RoutedEventArgs e)
         {
-            const string connectionString = "Data Source=VALUN;Initial Catalog=CrmRealEstate;Integrated Security=True";
-            string query = $"SELECT Password FROM Agents WHERE Login = {TextBoxLogin.Text}";
-            string Password = "";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            Agent agent = new Agent();
+            string Message = agent.Connect(TextBoxLogin.Text, TextBoxPassword.Password);
+            if (Message == "")
             {
-                SqlCommand sqlCommand = new SqlCommand(query, connection);
-
-                try
-                {
-                    connection.Open();
-                    Password = Convert.ToString(sqlCommand.ExecuteScalar());
-                }
-                catch (Exception x)
-                {
-                    string q = "\"";
-                    if(x.Message == $"Недопустимое имя столбца {q}{TextBoxLogin.Text}{q}.")
-                    {
-                        goto Error;
-                    }
-                    MessageBox.Show(x.Message);
-                    goto Skip;
-                }
-            }
-            if (Password == TextBoxPassword.Password)
-            {
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(agent);
                 mainWindow.Show();
                 this.Close();
-            }
-            else
+            }else
             {
-                MessageBox.Show("Данные были введены не верно!");
+                MessageBox.Show(Message);
             }
-
-            Error:
-            MessageBox.Show("Данные были введены не верно!");
-            ;
-            Skip:;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            loadAnimation.Visibility = Visibility.Visible;
+            await Task.Run(()=>Connection());
+            loadAnimation.Visibility = Visibility.Hidden;
+        }
+
+
+        void Connection()
+        {
+            
             bool isElevated;
             using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
             {
@@ -169,8 +153,8 @@ namespace CrmUI
                     service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromMinutes(1));
                 }
             }
+            
         }
-
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBoxKostil.Visibility = Visibility.Collapsed;

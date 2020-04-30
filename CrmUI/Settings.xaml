@@ -1,0 +1,37 @@
+﻿<Window x:Class="CrmUI.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CrmUI"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Settings" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize">
+  
+    <!--
+    темная тема
+    упрощенные кнопки
+    -->
+    
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0" Margin="0 30 0 0">
+                <Grid>
+                    <Label Content="Интерфейс" FontFamily="/CrmUI;component/Resources/fonts/#Roboto Medium" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <StackPanel Background="White" VerticalAlignment="Top">
+            <Button x:Name="ButtonFechar" HorizontalAlignment="Right" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="ButtonHidden_Click">
+                    <materialDesign:PackIcon Kind="ExpandLess"/>
+            </Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>
