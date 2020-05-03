@@ -18,6 +18,8 @@
 
                 <!--Правый верхний угол-->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="2">
+                    <TextBlock Name="UserName" Text="Валиев Тимур" Margin="0,0,10,0" FontFamily="/CrmUI;component/Resources/fonts/#Roboto" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray"/>
+
                     <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="Button_ClikLogout">
                         <materialDesign:PackIcon Kind="logout"/>
                     </Button>
@@ -39,13 +41,13 @@
         </StackPanel>
 
         <!--Центр-->
-        <Grid Margin="325 75 0 50">
+        <Grid Margin="300 75 0 50">
             <Grid.RowDefinitions>
                 <RowDefinition MinHeight="50"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="175"/>
             </Grid.ColumnDefinitions>
 
             <DataGrid Grid.Column="0" x:Name="dataGrid" MinWidth="600" BorderThickness="0" HorizontalContentAlignment="Stretch" ColumnWidth="Auto"/>
@@ -64,28 +66,23 @@
                 <Button Height="50" Click="Button_ClickRefresh" Grid.Row="0">
                     <StackPanel Orientation="Horizontal">
                         <Grid Width="26" Height="26" VerticalAlignment="Center" Margin="5" x:Name="GridRefreshAnimation">
-                            <Grid.RenderTransform>
-                                <RotateTransform x:Name="rotate"
-                                     CenterX="13"
-                                     CenterY="13"/>
-                            </Grid.RenderTransform>
                             <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" VerticalAlignment="Center"/>
                         </Grid>
-                        <TextBlock Text="Обновить" VerticalAlignment="Center"/>
+                        <TextBlock Text="Обновить" VerticalAlignment="Center" FontFamily="/CrmUI;component/Resources/fonts/#Roboto"/>
                     </StackPanel>
                 </Button>
                 <!--Сохранить-->
                 <Button Height="50" Click="Button_ClickUpload" Grid.Row="2">
                     <StackPanel Orientation="Horizontal" Width="107">
                         <materialDesign:PackIcon Kind="ContentSave" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock Text="Сохранить" VerticalAlignment="Center" Width="68"/>
+                        <TextBlock Text="Сохранить" VerticalAlignment="Center" Width="68" FontFamily="/CrmUI;component/Resources/fonts/#Roboto"/>
                     </StackPanel>
                 </Button>
                 <!--Создать сделку-->
                 <Button Height="50" Grid.Row="4" Click="Button_ClickCreateDeal">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="plus" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock Text="Заключить сделку" VerticalAlignment="Center" TextWrapping="Wrap" IsEnabled="False" Width="75"/>
+                        <TextBlock Text="Заключить сделку" VerticalAlignment="Center" TextWrapping="Wrap" IsEnabled="False" Width="75" FontFamily="/CrmUI;component/Resources/fonts/#Roboto"/>
                     </StackPanel>
                 </Button>
             </Grid>
@@ -103,41 +100,41 @@
             <materialDesign:TransitioningContent x:Name="TransitionSlideContent" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration = 0:0:0.2}">
                 <Grid x:Name="GridCursor" Margin="0 140 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="10" Height="60" Background="#FF04A0FF" />
             </materialDesign:TransitioningContent>
-            <ListView BorderBrush="#263238" x:Name="ListViewMenu" Margin="0 140 0 0" Foreground="White" Background="#263238" FontFamily="Champany &amp; Limousines" FontSize="25" SelectionChanged="ListViewMenu_SelectionChanged" IsSynchronizedWithCurrentItem="False" >
+            <ListView BorderBrush="#263238" x:Name="ListViewMenu" Margin="0 140 0 0" Foreground="White" Background="#263238" FontFamily="Champany &amp; Limousines" FontSize="25" SelectionChanged="ListViewMenu_SelectionChanged" IsSynchronizedWithCurrentItem="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                 <ListViewItem Height="60" BorderThickness="0">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="AccountMultiple" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock Text="Клиенты"  VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Клиенты"  VerticalAlignment="Center" Margin="20 0" FontFamily="/CrmUI;component/Resources/fonts/#Roboto" FontSize="25"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="AccountTie" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock  Text="Сотрудники" VerticalAlignment="Center" Margin="20 0" />
+                        <TextBlock  Text="Сотрудники" VerticalAlignment="Center" Margin="20 0" FontFamily="/CrmUI;component/Resources/fonts/#Roboto" FontSize="25"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="HouseCity" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock  Text="Недвжимость" VerticalAlignment="Center" Margin="20 0" />
+                        <TextBlock  Text="Недвжимость" VerticalAlignment="Center" Margin="20 0" FontFamily="/CrmUI;component/Resources/fonts/#Roboto" FontSize="25"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Cursor="Arrow" BorderThickness="1" SnapsToDevicePixels="True" Background="{x:Null}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FileDocument" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock  Text="Потребности" VerticalAlignment="Center" Margin="20 0" />
+                        <TextBlock  Text="Потребности" VerticalAlignment="Center" Margin="20 0" FontFamily="/CrmUI;component/Resources/fonts/#Roboto" FontSize="25"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FileDocument" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock  Text="Предложение" VerticalAlignment="Center" Margin="20 0" />
+                        <TextBlock  Text="Предложение" VerticalAlignment="Center" Margin="20 0" FontFamily="/CrmUI;component/Resources/fonts/#Roboto" FontSize="25"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Deal" Width="35" Height="35" VerticalAlignment="Center" Margin="5" />
-                        <TextBlock  Text="Сделка" VerticalAlignment="Center" Margin="20 0" />
+                        <TextBlock  Text="Сделка" VerticalAlignment="Center" Margin="20 0" FontFamily="/CrmUI;component/Resources/fonts/#Roboto" FontSize="25"/>
                     </StackPanel>
                 </ListViewItem>
             </ListView>

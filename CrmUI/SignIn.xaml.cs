@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -7,7 +6,6 @@ using System.ServiceProcess;
 using System.Security.Principal;
 using CrmBL.Model;
 using System.Threading.Tasks;
-using System.Threading;
 
 namespace CrmUI
 {
@@ -129,7 +127,6 @@ namespace CrmUI
             loadAnimation.Visibility = Visibility.Hidden;
         }
 
-
         void Connection()
         {
             
@@ -155,8 +152,10 @@ namespace CrmUI
             }
             
         }
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
+            //с помощью TextBlock на поле с паролем есть соответсвующая надпись
             TextBoxKostil.Visibility = Visibility.Collapsed;
             TextBoxPassword.Focus();
         }

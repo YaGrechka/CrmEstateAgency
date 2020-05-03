@@ -24,12 +24,30 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <Grid Height="350">
-            <StackPanel>
-                <TextBlock Text="Клиент" />
+        
+        <!--Центр-->
+        <Grid Margin="10 70 10 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Клиент" Margin="10" HorizontalAlignment="Center"/>
+                <TextBox Text="Потребность" Foreground="Gray"/>
+                <TextBox Text=" "/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Недвижимость"/>
                 <TextBox/>
             </StackPanel>
-            
+
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="Сотрудник"/>
+                <TextBox/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

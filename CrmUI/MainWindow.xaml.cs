@@ -165,6 +165,7 @@ namespace CrmUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            UserName.Text = agent.Surname + " "+ agent.Name;
             Refresh();
             //(wfhSample.Child as System.Windows.Forms.WebBrowser).Navigate("http://m.vk.com/YaGrechka");
             //GridClient.Children.Add(new UserControlClientTable());

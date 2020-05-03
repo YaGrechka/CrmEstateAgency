@@ -31,7 +31,7 @@ namespace CrmBL.Model
         {
             string Message = "Данные были введены не верно";
             const string connectionString = "Data Source=VALUN;Initial Catalog=CrmRealEstate;Integrated Security=True";
-            string query = $"SELECT Password FROM Agents WHERE Login = {Login}";
+            string query = $"SELECT Password FROM Agents WHERE Login = '{Login}'";
             string password = "";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -41,6 +41,16 @@ namespace CrmBL.Model
                 {
                     connection.Open();
                     password = Convert.ToString(sqlCommand.ExecuteScalar());
+
+                    query = $"SELECT Name FROM Agents WHERE Login = '{Login}'";
+                    sqlCommand = new SqlCommand(query, connection);
+                    Name = Convert.ToString(sqlCommand.ExecuteScalar());
+
+                    query = $"SELECT Surname FROM Agents WHERE Login = '{Login}'";
+                    sqlCommand = new SqlCommand(query, connection);
+                    Surname = Convert.ToString(sqlCommand.ExecuteScalar());
+
+                    connection.Close();
                 }
                 catch (Exception x)
                 {
