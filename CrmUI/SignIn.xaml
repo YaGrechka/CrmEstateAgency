@@ -10,7 +10,7 @@
         Title="SignIn" Height="450" Width="400" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" AllowDrop="True" Loaded="Window_Loaded">
     <Grid>
         <StackPanel VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" MouseDown="StackPanel_MouseDown">
-            <Grid Background="#FF04A0FF" Height="10"/>
+            <Grid Background="#FF2896FF" Height="10"/>
             <Grid Margin="5">
 
                 <!--Правый верхний угол-->
@@ -36,7 +36,7 @@
             <TextBox x:Name="TextBoxLogin" Grid.Row="0" Text="Логин" Width="200" BorderBrush="LightGray" BorderThickness="1" ClipToBounds="True" FontSize="14" MaxLines="1" MaxLength="20" Foreground="#FF6D6D6D" ToolTip="Введите логин своей учетной записи CRM Real Estate" GotFocus="TextBoxLogin_GotFocus" LostFocus="TextBoxLogin_LostFocus" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"/>
             <!--<TextBox x:Name="TextBoxPassword" Grid.Row="2" Text="Пароль" Width="200" BorderBrush="LightGray" BorderThickness="1" ClipToBounds="True" FontSize="14" MaxLines="1" MaxLength="20" Foreground="#FF6D6D6D" ToolTip="Введите пароль своей учетной записи CRM Real Estate" GotFocus="TextBoxPassword_GotFocus" LostFocus="TextBoxPassword_LostFocus"/>-->
             <PasswordBox x:Name="TextBoxPassword" Grid.Row="2" Width="200" BorderBrush="LightGray" BorderThickness="1" ClipToBounds="True" FontSize="14" MaxLength="20"  ToolTip="Введите пароль своей учетной записи CRM Real Estate" GotFocus="TextBoxPassword_GotFocus" LostFocus="TextBoxPassword_LostFocus"/>
-            <Button Grid.Row="4" Width="200" Content="Авторизоваться" Click="ButtonLogIn_Click"/>
+            <Button Grid.Row="4" Width="200" Content="Авторизоваться" Click="ButtonLogIn_Click" Background="#FF2896FF"/>
             <TextBox Name="TextBoxKostil" Grid.Row="2" Text="Пароль" FontSize="14" BorderBrush="LightGray" Foreground="#FF6D6D6D" Margin="75,0,226,0" GotFocus="TextBox_GotFocus" ToolTip="Введите пароль своей учетной записи CRM Real Estate"/>
         </Grid>
         <Grid Name="loadAnimation" Background="White" Opacity="0.7" Visibility="Hidden">

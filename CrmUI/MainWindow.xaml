@@ -13,7 +13,7 @@
     <Grid Background="#FFF3F5F5">
         <!--Верхняя панелька-->
         <StackPanel VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" MouseDown="StackPanel_MouseDown">
-            <Grid Background="#FF28A0FF" Height="10"/>
+            <Grid Background="#FF2896FF" Height="10"/>
             <Grid Margin="5">
 
                 <!--Правый верхний угол-->
