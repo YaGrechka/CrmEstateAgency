@@ -164,6 +164,7 @@
     <Resource Include="Resources\img\loading45.gif" />
     <Resource Include="Resources\img\empty Logo with white name.png" />
     <Resource Include="Resources\img\Logo dark.png" />
+    <Resource Include="Resources\img\Logo Blue.png" />
     <Content Include="Resources\img\Logo with black name line.svg" />
     <Resource Include="Resources\img\Logo with black white name.png" />
     <Content Include="Resources\img\Logo with white black name.svg" />

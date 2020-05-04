@@ -26,17 +26,24 @@ namespace CrmUI
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            try
+            {
+                DragMove();
+            }
+            catch
+            {
 
-        }
-
-        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
-        {
-
+            }
         }
 
         private void ButtonWindowMinimize_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

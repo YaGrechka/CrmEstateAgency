@@ -10,7 +10,7 @@
     <Grid>
         <!--Верхняя панелька-->
         <StackPanel VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" MouseDown="StackPanel_MouseDown">
-            <Grid Background="#FF04A0FF" Height="10"/>
+            <Grid Background="#FF2896FF" Height="10"/>
             <Grid Margin="5">
 
                 <!--Правый верхний угол-->
@@ -18,7 +18,7 @@
                     <Button x:Name="ButtonWindowMinimize" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0, 4,0,0" Click="ButtonWindowMinimize_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize"/>
                     </Button>
-                    <Button x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="ButtonFechar_Click">
+                    <Button x:Name="ButtonClose" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Padding="0" Click="ButtonClose_Click">
                         <materialDesign:PackIcon Kind="Close"/>
                     </Button>
                 </StackPanel>
@@ -33,20 +33,38 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
+            <!--Клиент-->
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Клиент" Margin="10" HorizontalAlignment="Center"/>
-                <TextBox Text="Потребность" Foreground="Gray"/>
-                <TextBox Text=" "/>
+                <TextBox Text="Имя" Foreground="Gray"/>
+                <TextBox Text="Фамилия" Foreground="Gray"/>
+                <TextBox Text="Отчество" Foreground="Gray"/>
+                <TextBox Text="Паспорт" Foreground="Gray" ToolTip="Серия и номер паспорта"/>
+                <TextBox Text="Телефон" Foreground="Gray"/>
             </StackPanel>
-
+            
+            <!--Недвижимость-->
             <StackPanel Grid.Column="1">
-                <TextBlock Text="Недвижимость"/>
-                <TextBox/>
+                <TextBlock Text="Недвижимость" Margin="10" HorizontalAlignment="Center"/>
+                <TextBox Text="Город" Foreground="Gray"/>
+                <TextBox Text="Улица" Foreground="Gray"/>
+                <TextBox Text="Дом" Foreground="Gray"/>
+                <TextBox Text="Квартира" Foreground="Gray"/>
+                <TextBox Text="Этаж" Foreground="Gray"/>
+                <TextBox Text="Комнат" Foreground="Gray"/>
+                <TextBox Text="Площадь" Foreground="Gray"/>
+                <TextBlock Text="Тип недвижимости" Margin="10"/>
+                <RadioButton Content="Квартира"/>
+                <RadioButton Content="Дом"/>
+                <RadioButton Content="Земельный участок"/>
             </StackPanel>
 
+            <!--Сотрудник-->
             <StackPanel Grid.Column="2">
-                <TextBlock Text="Сотрудник"/>
-                <TextBox/>
+                <TextBlock Text="Сотрудник" Margin="10" HorizontalAlignment="Center"/>
+                <TextBox Text="Имя" Foreground="Gray"/>
+                <TextBox Text="Фамилия" Foreground="Gray"/>
+                <TextBox Text="Отчество" Foreground="Gray"/>
             </StackPanel>
         </Grid>
     </Grid>

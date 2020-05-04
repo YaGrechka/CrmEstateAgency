@@ -13,7 +13,7 @@
     <Grid Background="#FFF3F5F5">
         <!--Верхняя панелька-->
         <StackPanel VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" MouseDown="StackPanel_MouseDown">
-            <Grid Background="#FF04A0FF" Height="10"/>
+            <Grid Background="#FF28A0FF" Height="10"/>
             <Grid Margin="5">
 
                 <!--Правый верхний угол-->
@@ -63,7 +63,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <!--Обновить-->
-                <Button Height="50" Click="Button_ClickRefresh" Grid.Row="0">
+                <Button Height="50" Click="Button_ClickRefresh" Grid.Row="0" Background="#FF2896FF">
                     <StackPanel Orientation="Horizontal">
                         <Grid Width="26" Height="26" VerticalAlignment="Center" Margin="5" x:Name="GridRefreshAnimation">
                             <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" VerticalAlignment="Center"/>
@@ -72,14 +72,14 @@
                     </StackPanel>
                 </Button>
                 <!--Сохранить-->
-                <Button Height="50" Click="Button_ClickUpload" Grid.Row="2">
+                <Button Height="50" Click="Button_ClickUpload" Grid.Row="2" Background="#FF2896FF">
                     <StackPanel Orientation="Horizontal" Width="107">
                         <materialDesign:PackIcon Kind="ContentSave" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
                         <TextBlock Text="Сохранить" VerticalAlignment="Center" Width="68" FontFamily="/CrmUI;component/Resources/fonts/#Roboto"/>
                     </StackPanel>
                 </Button>
                 <!--Создать сделку-->
-                <Button Height="50" Grid.Row="4" Click="Button_ClickCreateDeal">
+                <Button Height="50" Grid.Row="4" Click="Button_ClickCreateDeal" Background="#FF2896FF">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="plus" Width="25" Height="25" VerticalAlignment="Center" Margin="5" />
                         <TextBlock Text="Заключить сделку" VerticalAlignment="Center" TextWrapping="Wrap" IsEnabled="False" Width="75" FontFamily="/CrmUI;component/Resources/fonts/#Roboto"/>
@@ -98,7 +98,7 @@
         <Grid Width="262" HorizontalAlignment="Left" Background="#263238">
             <Image Source="Resources\img\empty Logo with white name.png" VerticalAlignment="Top" Margin="10,26,10,0" Width="210"/>
             <materialDesign:TransitioningContent x:Name="TransitionSlideContent" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration = 0:0:0.2}">
-                <Grid x:Name="GridCursor" Margin="0 140 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="10" Height="60" Background="#FF04A0FF" />
+                <Grid x:Name="GridCursor" Margin="0 140 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="10" Height="60" Background="#FF2896FF" />
             </materialDesign:TransitioningContent>
             <ListView BorderBrush="#263238" x:Name="ListViewMenu" Margin="0 140 0 0" Foreground="White" Background="#263238" FontFamily="Champany &amp; Limousines" FontSize="25" SelectionChanged="ListViewMenu_SelectionChanged" IsSynchronizedWithCurrentItem="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                 <ListViewItem Height="60" BorderThickness="0">
